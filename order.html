@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order - Online Food Delivery</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+  <!-- Hover CSS -->
+  <link rel="stylesheet" href="css/hover-min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Luckiest Guy', cursive;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+    .order-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1200px;
+      padding: 0 15px;
+    }
+    .order-box, .form-box {
+      flex: 1 1 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .order-box h2 {
+      margin-bottom: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #333;
+    }
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    tfoot th {
+      font-size: 1.1em;
+    }
+    input[type="text"], input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #e85b50;
+    }
+
+    /* Responsive table */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .order-section {
+        flex-direction: column;
+        padding: 10px;
+      }
+      .order-box, .form-box {
+        flex: 1 1 100%;
+      }
+      th, td {
+        font-size: 0.9rem;
+      }
+      .btn-primary {
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 14px;
+      }
+      .order-section {
+        margin: 10px;
+        gap: 15px;
+      }
+      .order-box h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="order-section">
+    <!-- Orders Box -->
+    <div class="order-box">
+      <h2>Your Order</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="order-items"></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3">Total</th>
+              <th id="cart-total">$0.00</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Delivery Form -->
+    <div class="form-box">
+      <form action="https://formspree.io/f/xovldwev" method="POST" class="form">
+        <input type="hidden" name="Order Details" id="order-details">
+        <input type="hidden" name="Total" id="order-total">
+
+        <fieldset>
+          <legend>Delivery Details</legend>
+          <p>Full Name</p>
+          <input type="text" name="Full Name" required>
+          <p>Phone Number</p>
+          <input type="tel" name="Phone Number" required>
+          <p>Kelas</p>
+          <input type="text" name="Kelas" required>
+          <input type="submit" value="Confirm Order" class="btn-primary">
+        </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(function(){
+      const items = JSON.parse(localStorage.getItem("myCart") || "[]");
+      const total = localStorage.getItem("cartTotal") || "0.00";
+      const $tbody = $("#order-items");
+      let details = [];
+
+      items.forEach(item => {
+        const subtotal = (item.price * item.qty).toFixed(2);
+        const row = `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.qty}</td>
+            <td>$${item.price.toFixed(2)}</td>
+            <td>$${subtotal}</td>
+          </tr>`;
+        $tbody.append(row);
+        details.push(`${item.qty} x ${item.name} ($${item.price})`);
+      });
+
+      $("#cart-total").text("$" + total);
+      $("#order-details").val(details.join(", "));
+      $("#order-total").val("$" + total);
+    });
+  </script>
+</body>
+</html>

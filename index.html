@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projek PBL Biology 4 Anggerik</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="css/hover-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @media (max-width: 768px) {
+            .menu ul {
+                width: 100%;
+                text-align: center;
+                padding: 0;
+            }
+            .menu ul li {
+                display: block;
+                padding: 10px 0;
+            }
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                grid-gap: 15px;
+            }
+            .food-menu-img, .food-menu-desc {
+                width: 100%;
+                margin: 0;
+                float: none;
+                text-align: center;
+            }
+            .food-menu-desc input[type="number"] {
+                width: 60%;
+                margin: 10px auto;
+                display: block;
+            }
+            .cart-content {
+                width: 95%;
+                right: 2.5%;
+                top: 70px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo img {
+                width: 120px;
+            }
+            .btn-primary {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Section Start -->
+    <header class="navbar">
+        <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" title="Logo">
+                        <img src="img/logobio.png" alt="Logo" class="img-responsive">
+                    </a>
+                </div>
+                <div class="menu text-right">
+                    <ul>
+                        <li><a class="hvr-underline-from-center" href="index.html">Home</a></li>
+                        <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
+                        <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
+                        <li>
+                            <a id="shopping-cart" class="shopping-cart">
+                                <i class="fa fa-cart-arrow-down"></i>
+                                <span class="badge">0</span>
+                            </a>
+                            <div id="cart-content" class="cart-content">
+                                <h3 class="text-center">Shopping Cart</h3>
+                                <table class="cart-table" border="0">
+                                    <tr>
+                                        <th>Food</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Qty</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="img/food/donut.jpg" alt="Food"></td>
+                                        <td>Donut</td>
+                                        <td>$0.50</td>
+                                        <td>1</td>
+                                        <td>$0.50</td>
+                                        <td><a href="#" class="btn-delete">&times;</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4">Total</th>
+                                        <th>$0.50</th>
+                                        <th></th>
+                                    </tr>
+                                </table>
+                                <a href="order.html" class="btn-primary">Confirm Order</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Navigation Section End -->
+
+    <!-- Category Section Start -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="text-center">Explore Foods</h2>
+            <div class="heading-border"></div>
+            <div class="grid-3">
+                <a href="category-foods.html">
+                    <div class="float-container">
+                        <img src="img/food/tiramisu.jpeg" class="img-responsive" alt="">
+                        <h3 class="float-text text-white">Tiramisu Yogurt</h3>
+                    </div>
+                </a>
+                <a href="category-foods.html">
+                    <div class="float-container">
+                        <img src="img/food/donut.jpg" class="img-responsive" alt="">
+                        <h3 class="float-text text-white">Donut</h3>
+                    </div>
+                </a>
+                <a href="category-foods.html">
+                    <div class="float-container">
+                        <img src="img/food/dadih.png" class="img-responsive" alt="">
+                        <h3 class="float-text text-white">Creamy Dadih</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Category Section End -->
+
+    <!-- Foods Section Start -->
+    <section class="food-menu">
+        <div class="container">
+            <h2 class="text-center">FOOD MENU</h2>
+            <div class="heading-border"></div>
+            <div class="grid-2">
+                <div class="food-menu-box">
+                    <form action="">
+                        <div class="food-menu-img">
+                            <img src="img/food/dadih.png" alt="" class="img-responsive img-curve">
+                        </div>
+                        <div class="food-menu-desc">
+                            <h4>Creamy Dadih</h4>
+                            <p class="food-price">$2.50</p>
+                            <p class="food-details">Silky smooth and sweet, the Malaysian classic you love.</p>
+                            <input type="number" value="0" min="0">
+                            <input type="submit" class="btn-primary" value="Add To Cart">
+                        </div>
+                    </form>
+                </div>
+                <div class="food-menu-box">
+                    <form action="">
+                        <div class="food-menu-img">
+                            <img src="img/food/tiramisu.jpeg" alt="" class="img-responsive img-curve">
+                        </div>
+                        <div class="food-menu-desc">
+                            <h4>Tiramisu Yogurt</h4>
+                            <p class="food-price">$2.50</p>
+                            <p class="food-details">Layers of creamy delight, coffee-kissed perfection.</p>
+                            <input type="number" value="0" min="0">
+                            <input type="submit" class="btn-primary" value="Add To Cart">
+                        </div>
+                    </form>
+                </div>
+                <div class="food-menu-box">
+                    <form action="">
+                        <div class="food-menu-img">
+                            <img src="img/food/donut.jpg" alt="" class="img-responsive img-curve">
+                        </div>
+                        <div class="food-menu-desc">
+                            <h4>Sugar Donut</h4>
+                            <p class="food-price">$0.50</p>
+                            <p class="food-details">Soft, fluffy, and coated in sweet sugar – a classic treat for any time of the day!</p>
+                            <input type="number" value="0" min="0">
+                            <input type="submit" class="btn-primary" value="Add To Cart">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <p class="text-center">
+            <a href="foods.html" class="btn-primary">See All Foods</a>
+        </p>
+    </section>
+    <!-- Foods Section End -->
+
+    <!-- Footer Section Start -->
+    <section class="footer">
+        <div class="container">
+            <div class="grid-3">
+                <div class="text-center">
+                    <h3>About Us</h3><br>
+                    <p>We’re from Class 4 Anggerik, a team of curious minds turning science into something fun and tasty.</p>
+                </div>
+                <div class="texr-center">
+                    <h3>Site Map</h3><br>
+                    <div class="site-links">
+                        <a href="foods.html">Foods</a>
+                        <a href="order.html">Order</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <h3>Social Links</h3><br>
+                    <div class="social">
+                        <ul>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/null/facebook-new.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/fluency/48/null/instagram-new.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/null/twitter--v1.png"/></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section End -->
+
+    <!-- Copyright Section start -->
+    <section class="copyright">
+        <div class="container text-center">
+            <p>All rights reserved. Design By <a href="#">Code Arcade</a></p>
+        </div>
+        <a id="back-to-top" class="btn-primary">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
